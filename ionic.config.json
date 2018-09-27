@@ -1,0 +1,7 @@
+{
+  "name": "TodoTask",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
