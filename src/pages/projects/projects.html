@@ -20,6 +20,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
+    <ion-list>
+        <button ion-item no-lines class="bottom-border" *ngFor="let project of projects" (click)="onItemSelected(project)">
+          <ion-icon item-start class="icon-circle"></ion-icon>
+          <ion-label>{{ project.name }}</ion-label>
+        </button> 
+        <button ion-item (click)="onAddProject()">
+            <ion-icon name='add' item-start></ion-icon>
+            <ion-label>Add Project</ion-label>
+            
+        </button>
+        <ion-label>{{ project.count }}</ion-label> 
+    </ion-list>
 </ion-content>

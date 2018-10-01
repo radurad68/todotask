@@ -1,14 +1,11 @@
-page-projects {
-    .item[no-lines].bottom-border { 
-        border-bottom: 1px solid grey; 
-    }
+circle {
     .icon-circle, .icon-circle-large, .icon-circle-small{
         position: relative;
         display: inline-block;
         margin: -1px;
         
-        width: 10px; /* 60*/
-        height: 10px; 
+        width: 20px; /* 60*/
+        height: 20px; 
         
         -moz-border-radius:50%;
         -webkit-border-radius:50%;
@@ -19,9 +16,6 @@ page-projects {
         color: #fff;
         
       }
-    .icon {
-        width: 20px;
-        height: 20px;
-    }
-    
 }
+
+
