@@ -12,6 +12,8 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ProjectAddPage } from '../pages/project-add/project-add';
+import { ProjectViewPage } from '../pages/project-view/project-view';
+import { TaskAddPage } from '../pages/task-add/task-add';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 import { ProjectsServiceProvider } from '../providers/projects-service/projects-service';
 
@@ -22,6 +24,8 @@ import { CircleComponent } from '../components/circle/circle';
     MyApp,
     ProjectsPage,
     ProjectAddPage,
+    ProjectViewPage,
+    TaskAddPage,
     CircleComponent
   ],
   imports: [
@@ -39,6 +43,9 @@ import { CircleComponent } from '../components/circle/circle';
     MyApp,
     ProjectsPage,
     ProjectAddPage,
+    ProjectViewPage,
+    TaskAddPage,
+    CircleComponent
   ],
   providers: [
     StatusBar,

@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { StorageServiceProvider } from '../../providers/storage-service/storage-service';
@@ -44,14 +43,17 @@ export class ProjectsServiceProvider {
 
   addTask(project: Project, task: Task) {
     project.addTask(task);
+    this.refresh();
   }
 
   removeTask(project: Project, task: Task) {
     project.removeTask(task);
+    this.refresh();
   }
 
   moveTask(projectFrom: Project, task: Task, projectTo: Project) {
     projectFrom.moveTask(task, projectTo);
+    this.refresh();
   }
 
   // Storage, Observable

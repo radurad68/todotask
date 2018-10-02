@@ -2,26 +2,10 @@ page-projects {
     .item[no-lines].bottom-border { 
         border-bottom: 1px solid grey; 
     }
-    .icon-circle, .icon-circle-large, .icon-circle-small{
-        position: relative;
-        display: inline-block;
-        margin: -1px;
-        
-        width: 10px; /* 60*/
-        height: 10px; 
-        
-        -moz-border-radius:50%;
-        -webkit-border-radius:50%;
-        border-radius: 50%;
-        border: 1px solid #ebebeb;
-       
-        background: rgb(0, 161, 225);
-        color: #fff;
-        
-      }
-    .icon {
-        width: 20px;
-        height: 20px;
+
+    .ion-label {
+        margin-right: 5px;
     }
+    
     
 }

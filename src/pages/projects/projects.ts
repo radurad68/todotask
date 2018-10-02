@@ -3,10 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ProjectsServiceProvider } from '../../providers/projects-service/projects-service'; 
 import { Project } from '../../interfaces/project';
-import { Task } from '../../interfaces/task';
 
 import { ProjectAddPage } from '../project-add/project-add';
-import { CircleComponent } from '../../components/circle/circle';
+import { ProjectViewPage} from '../project-view/project-view';
 
 /**
  * Generated class for the ProjectsPage page.
@@ -23,6 +22,7 @@ import { CircleComponent } from '../../components/circle/circle';
 export class ProjectsPage {
 
   projects: Array<Project>; 
+  color: "green";
 
   constructor(
     public navCtrl: NavController, 
@@ -41,6 +41,9 @@ export class ProjectsPage {
 
   onItemSelected(project) {
     console.log('onItemSelected');
+    this.navCtrl.push(ProjectViewPage, {
+      project: project
+    });
   }
 
   onAddProject() {
