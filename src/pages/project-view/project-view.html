@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-list>
-      <button ion-item no-lines class="bottom-border" detail-none *ngFor="let task of project.tasks">
+      <button ion-item no-lines class="bottom-border" detail-none *ngFor="let task of project.tasks" (click)="onSelect(task)">
           <circle item-start [ngStyle]="{'background': 'red' }"></circle>
           <circle item-start style="background: rgb(15, 0, 225)"></circle>
           

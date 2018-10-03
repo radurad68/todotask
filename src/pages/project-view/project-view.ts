@@ -44,4 +44,12 @@ export class ProjectViewPage {
       new: true
     });
   }
+
+  onSelect(task) {
+    this.navCtrl.push(TaskAddPage, {
+      project: this.project,
+      task: task,
+      edit: true
+    });
+  }
 }

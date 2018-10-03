@@ -14,9 +14,15 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 @Injectable()
 export class ProjectsServiceProvider {
 
+  // projects list as observable
   projects: Array<Project> = new Array<Project>();
   projectsSubject: BehaviorSubject<Array<Project>> = new BehaviorSubject([]);
   projects$: Observable<Array<Project>> = this.projectsSubject.asObservable();
+
+  // project selected for task as observable
+  projectTask: Project;
+  projectTaskSubject: BehaviorSubject<Project> = new BehaviorSubject(null);
+  projectTask$: Observable<Project> = this.projectTaskSubject.asObservable();
 
   constructor(
     public storageService: StorageServiceProvider
@@ -28,37 +34,53 @@ export class ProjectsServiceProvider {
   // Projects
   addProject(project: Project) {
     this.projects.push(project);
-    this.refresh();
+    this.refreshProjects();
   }
 
   removeProject(project: Project) {
     let index = this.projects.indexOf(project);
     if (index != -1) {
       this.projects.splice(index, 1);
-      this.refresh();
+      this.refreshProjects();
     }
+  }
+
+  updateProjectColor(project: Project, color: number) {
+    project.updateColor(color);
+    this.refreshProjects();
   }
 
   // Tasks
 
   addTask(project: Project, task: Task) {
     project.addTask(task);
-    this.refresh();
+    this.refreshProjects();
   }
 
   removeTask(project: Project, task: Task) {
     project.removeTask(task);
-    this.refresh();
+    this.refreshProjects();
   }
 
   moveTask(projectFrom: Project, task: Task, projectTo: Project) {
     projectFrom.moveTask(task, projectTo);
-    this.refresh();
+    this.refreshProjects();
+  }
+
+  // Utils
+
+  updateProjectForTask(project: Project) {
+    this.projectTask = project;
+    this.refreshProjectTask();
   }
 
   // Storage, Observable
 
-  refresh() {
+  refreshProjectTask() {
+    this.projectTaskSubject.next(this.projectTask);
+  }
+
+  refreshProjects() {
     this.projectsSubject.next(this.projects);
     this.saveProjects();
   }

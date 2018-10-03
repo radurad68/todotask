@@ -22,5 +22,10 @@
       <ion-item>
           <ion-input type="text" [(ngModel)]="name" placeholder="New project name" (ionChange)="onChangeName($event.value)"></ion-input>
       </ion-item>
+      <button ion-item detail-push="true" (click)="onSelectColor()">
+        <ion-icon item-start name="color-palette" ios="ios-color-palette"></ion-icon>
+        <ion-label item-content class="inner-text">Color</ion-label>
+        <circle item-end class="inner-icon" [circleColor]="project.colorRgb" [circleWidth]="'25'" [circleHeight]="'25'" [circleTransform]="'translate(0,7%)'" #circle></circle>
+      </button>
   </ion-list>
 </ion-content>

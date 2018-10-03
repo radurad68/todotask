@@ -3,9 +3,38 @@ page-projects {
         border-bottom: 1px solid grey; 
     }
 
-    .ion-label {
-        margin-right: 5px;
+    .inner-icon {
+        min-width: 10% !important;
+        max-width: 10% !important;
+        margin: 0 0 0 0 !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
     }
-    
-    
+
+    .inner-text {
+        min-width: 80% !important;
+        max-width: 80% !important;
+        margin: 0 0 0 0 !important;
+        font-size: 18px;
+    }
+
+    .inner-count {
+        margin: 0 0 0 0 !important;
+        padding-right: 10px!important;
+        text-align: right;
+        color: gray;
+        font-size: 13px;
+    }
+
+    .item {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+    }
+
+    .item-inner {
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+     }
+
+
 }

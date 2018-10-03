@@ -1,0 +1,30 @@
+<!--
+  Generated template for the ProjectColorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Color</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-grid>
+        <ion-row *ngFor="let colorsArray of colors">
+          <ion-col col-2 *ngFor="let color of colorsArray">
+              <button clear class="inner-button" (click)="onColorSelected(color)">
+                <circle class="inner-icon" [circleColor]="color" [circleWidth]="'35'" [circleHeight]="'35'" [circleTransform]="'translate(0,0)'"></circle>
+                <ion-icon name='checkmark' class="inner-checkmark" *ngIf="isSelected(color)"></ion-icon>
+              </button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
+</ion-content>

@@ -1,4 +1,5 @@
 import { Task } from '../interfaces/task';
+import { Colors} from '../interfaces/colors';
 
 export class Project {
     tasks: Array<Task>;
@@ -11,8 +12,12 @@ export class Project {
         if (name != null && name != undefined) {
             this.name = name;
         }
-        if (color != null && color != undefined) {
+        if (color != null && color != undefined && color < Colors.list.length) {
             this.color = color;
+        }
+        else
+        {
+            this.color = 0;
         }
         if (tasks != null && tasks != undefined) {
             this.tasks = tasks;
@@ -21,6 +26,7 @@ export class Project {
             this.tasks = new Array<Task>();
         }
         this.updateCount();
+        this.colorRgb = Colors.list[this.color];
     }
 
     addTask(task: Task) {
@@ -41,6 +47,11 @@ export class Project {
         project.addTask(task);
         this.updateCount();
     }
+
+    updateColor(color: number) {
+        this.color = color;
+        this.colorRgb = Colors.list[this.color];
+    } 
 
     private updateCount() {
         this.count = this.tasks.length;

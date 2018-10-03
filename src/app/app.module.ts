@@ -13,7 +13,10 @@ import { MyApp } from './app.component';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ProjectAddPage } from '../pages/project-add/project-add';
 import { ProjectViewPage } from '../pages/project-view/project-view';
+import { ProjectColorPage } from '../pages/project-color/project-color';
+import { ProjectsListPage } from '../pages/projects-list/projects-list';
 import { TaskAddPage } from '../pages/task-add/task-add';
+
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 import { ProjectsServiceProvider } from '../providers/projects-service/projects-service';
 
@@ -25,6 +28,8 @@ import { CircleComponent } from '../components/circle/circle';
     ProjectsPage,
     ProjectAddPage,
     ProjectViewPage,
+    ProjectColorPage,
+    ProjectsListPage,
     TaskAddPage,
     CircleComponent
   ],
@@ -44,6 +49,8 @@ import { CircleComponent } from '../components/circle/circle';
     ProjectsPage,
     ProjectAddPage,
     ProjectViewPage,
+    ProjectColorPage,
+    ProjectsListPage,
     TaskAddPage,
     CircleComponent
   ],

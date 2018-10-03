@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ProjectsServiceProvider } from '../../providers/projects-service/projects-service';
 import { Project } from '../../interfaces/project';
+
+import { ProjectColorPage } from '../../pages/project-color/project-color';
 
 /**
  * Generated class for the ProjectAddPage page.
@@ -18,8 +20,12 @@ import { Project } from '../../interfaces/project';
 })
 export class ProjectAddPage {
 
+  @ViewChild('circle') circle;
+
   name: string;
   isValid: boolean = false;
+  project: Project;
+  count: number = 1;
 
   constructor(
     public navCtrl: NavController, 
@@ -27,15 +33,20 @@ export class ProjectAddPage {
     public projectsService: ProjectsServiceProvider
   ) {
     this.navCtrl.canGoBack()
+    this.project = new Project();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectAddPage');
   }
 
+  ionViewWillEnter() {
+    this.circle.update(this.project.colorRgb);
+  }
+
   onSave() {
-    let project = new Project(this.name, 1);
-    this.projectsService.addProject(project);
+    this.project.name = this.name;
+    this.projectsService.addProject(this.project);
     this.navCtrl.pop();
   }
 
@@ -51,6 +62,12 @@ export class ProjectAddPage {
     {
       this.isValid = false;
     }
+  }
+
+  onSelectColor() {
+    this.navCtrl.push(ProjectColorPage, {
+      project: this.project
+    });
   }
 
 }

@@ -24,18 +24,13 @@
 
     <ion-list>
         <button ion-item no-lines class="bottom-border" detail-none *ngFor="let project of projects" (click)="onItemSelected(project)">
-          <circle item-start [circleColor]="project.colorRgb" class="col-10"></circle>
-          <!--<circle item-start [circleColor]="'blue'" style="background: rgb(15, 0, 225)" [style.background]="project.colorRgb" [ngStyle]="{'background': project.colorRgb, 'width': '30px', 'height': '30px'}"></circle>-->
-
-          <!--<circle item-start [ngStyle]="{'background': project.colorRgb }" [circleColor]="project.colorRgb"></circle>
-          <circle item-start style="background: rgb(15, 0, 225)" [style.background]="project.colorRgb" [ngStyle]="{'background': project.colorRgb, 'width': '30px', 'height': '30px'}"></circle>-->
-          
-          <ion-label item-content class="col-80">{{ project.name }}</ion-label>
-          <ion-label item-end class="col-10">{{ project.count }}</ion-label>
+          <circle item-start [circleColor]="project.colorRgb" class="inner-icon"></circle>
+          <ion-label item-content class="inner-text">{{ project.name }}</ion-label>
+          <ion-label item-end class="inner-count">{{ project.count }}</ion-label>
         </button> 
         <button ion-item detail-none (click)="onAddProject()">
-            <ion-icon name='add' item-start></ion-icon>
-            <ion-label item-content>Add Project</ion-label>
+            <ion-icon item-start name='add' class="inner-icon"></ion-icon>
+            <ion-label item-content class="inner-text">Add Project</ion-label>
         </button>
     </ion-list>
 </ion-content>
