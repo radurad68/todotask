@@ -17,7 +17,21 @@ page-task-add {
          color: gray;
      }
 
-    .buttons {
-        display: flex;
+    .inner-buttons {
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+        padding-right: 10px !important;
+     }
+
+     .inner-button {
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+        width: 30px;
+        height: 30px;
+     }
+
+     .button {
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
      }
 }

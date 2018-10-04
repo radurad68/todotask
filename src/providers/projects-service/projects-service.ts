@@ -4,7 +4,7 @@ import { StorageServiceProvider } from '../../providers/storage-service/storage-
 import { Project } from '../../interfaces/project';
 import { Task } from '../../interfaces/task';
 
-import { Observable, BehaviorSubject } from 'rxjs/Rx';
+import { Observable, BehaviorSubject, Subject } from 'rxjs/Rx';
 /*
   Generated class for the ProjectsServiceProvider provider.
 
@@ -21,7 +21,7 @@ export class ProjectsServiceProvider {
 
   // project selected for task as observable
   projectTask: Project;
-  projectTaskSubject: BehaviorSubject<Project> = new BehaviorSubject(null);
+  projectTaskSubject: Subject<Project> = new Subject();
   projectTask$: Observable<Project> = this.projectTaskSubject.asObservable();
 
   constructor(
@@ -29,6 +29,7 @@ export class ProjectsServiceProvider {
   ) {
     console.log('Hello ProjectsServiceProvider Provider');
     this.loadProjects();
+    this.populateProjects();
   }
 
   // Projects
@@ -45,9 +46,28 @@ export class ProjectsServiceProvider {
     }
   }
 
+  updateProject(project: Project) {
+    project.update();
+    this.refreshProjects();
+  }
+
   updateProjectColor(project: Project, color: number) {
     project.updateColor(color);
     this.refreshProjects();
+  }
+
+  getIndexOf(project: Project) {
+    this.projects.indexOf(project);
+  }
+
+  getProjectByIndex(index: number) {
+    if (index >= 0 && index < this.projects.length) {
+      return this.projects[index];
+    }
+    else {
+      return null;
+    }
+
   }
 
   // Tasks
@@ -95,8 +115,28 @@ export class ProjectsServiceProvider {
         if (list != undefined) {
           console.log(list);
           this.projects = list;
+          this.refreshProjects();
         }
       })
+  }
+
+  // dummy
+  populateProjects() {
+    // populate
+    this.projects = new Array<Project>();
+    let project = new Project('Project 1', 3);
+    let task1 = new Task('Task 1', 2);
+    let task2 = new Task('Task 2', 3);
+    project.addTask(task1);
+    project.addTask(task2);
+    let project2 = new Project('Project 2', 10);
+    let task21 = new Task('Task 1', 1);
+    let task22 = new Task('Task 2', 1);
+    project2.addTask(task21);
+    project2.addTask(task22);
+    this.projects.push(project);
+    this.projects.push(project2);
+    this.refreshProjects();
   }
 
 }

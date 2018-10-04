@@ -14,6 +14,14 @@ import { ProjectsListPage } from '../../pages/projects-list/projects-list';
  * Ionic pages and navigation.
  */
 
+class ButtonFlag {
+  image: string;
+
+  constructor(image: string) {
+    this.image = image;
+  }
+}
+
 @IonicPage()
 @Component({
   selector: 'page-task-add',
@@ -30,6 +38,10 @@ export class TaskAddPage {
   project: Project; // project to add to
   task: Task; // task to add/edit
   projectOld: Project; // project to move from
+  isOtherProject: boolean = false;
+
+  buttons: Array<ButtonFlag>;
+  priorityIndex: number = 0;
 
 
   // utils
@@ -40,7 +52,9 @@ export class TaskAddPage {
     public navParams: NavParams,
     public projectsService: ProjectsServiceProvider
   ) {
-    this.project = this.navParams.get('project');
+    this.projectOld = this.navParams.get('projectForTaskAdd');
+    this.project = new Project(this.projectOld.name, this.projectOld.color);
+    this.isOtherProject = false;
 
     if (this.navParams.get('new') != undefined) {
       this.isAdd = true;
@@ -50,6 +64,7 @@ export class TaskAddPage {
       this.task = this.navParams.get('task');
       this.name = this.task.name;
       this.isValid = true;
+      this.priorityIndex = this.task.priority;
     }
 
     this.title = this.isAdd ? 'New Task' : 'Edit Task';
@@ -57,15 +72,13 @@ export class TaskAddPage {
     // subscribe to changes from projects list
     this.projectsService.projectTask$.subscribe(project => {
       if (project != null && project != undefined) {
+        console.log('new project selected');
         this.project = project;
-        // save initial project
-        if (!this.isAdd) {
-          if (this.projectOld == null && this.projectOld == undefined) {
-            this.projectOld = project;
-          }
-        }
+        this.isOtherProject = true;
       }
     })
+
+    this.prepareButtons();
 
   }
 
@@ -73,19 +86,27 @@ export class TaskAddPage {
     console.log('ionViewDidLoad TaskAddPage');
   }
 
+  // Actions
+
   onSave() {
     if (this.isAdd) {
       let task = new Task(this.name);
-      task.priority = 1;
-      this.projectsService.addTask(this.project, task);
+      task.priority = this.priorityIndex;
+      if (this.isOtherProject) {
+        this.projectsService.addTask(this.project, task);
+      }
+      else {
+        this.projectsService.addTask(this.projectOld, task);
+      }
     }
     else {
       this.task.name = this.name;
-      if (this.projectOld != undefined && this.projectOld != null) {
+      this.task.priority = this.priorityIndex;
+      if (this.isOtherProject && this.projectOld != this.project) {
         this.projectsService.moveTask(this.projectOld, this.task, this.project);
       }
       else {
-        this.projectsService.refreshProjects();
+        this.projectsService.updateProject(this.projectOld);
       }
     }
 
@@ -108,8 +129,31 @@ export class TaskAddPage {
 
   onSelectProject() {
     this.navCtrl.push(ProjectsListPage, {
-      project: this.project
+      projectForTaskSelect: this.isOtherProject ? this.project : this.projectOld
     });
   }
+
+  onButtonPressed(button) {
+    this.priorityIndex = this.buttons.indexOf(button);
+  }
+
+  isButtonSelected(button) {
+    return this.priorityIndex == this.buttons.indexOf(button);
+  }
+
+  // Buttons
+
+  prepareButtons() {
+    this.buttons = new Array<ButtonFlag>();
+    let buttonLow = new ButtonFlag("/assets/imgs/FlagWhite.png");
+    let buttonMedium = new ButtonFlag("/assets/imgs/FlagYellow.png");
+    let buttonMediumHigh = new ButtonFlag("/assets/imgs/FlagOrange.png");
+    let buttonHigh = new ButtonFlag("/assets/imgs/FlagRed.png");
+    this.buttons.push(buttonLow);
+    this.buttons.push(buttonMedium);
+    this.buttons.push(buttonMediumHigh);
+    this.buttons.push(buttonHigh);
+  }
+
 
 }

@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CircleComponent } from './circle/circle';
+import { ListOptionsComponent } from './list-options/list-options';
 @NgModule({
-	declarations: [CircleComponent],
+	declarations: [CircleComponent,
+    ListOptionsComponent],
 	imports: [],
-	exports: [CircleComponent]
+	exports: [CircleComponent,
+    ListOptionsComponent]
 })
 export class ComponentsModule {}

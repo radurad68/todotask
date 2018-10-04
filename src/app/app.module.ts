@@ -21,6 +21,7 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
 import { ProjectsServiceProvider } from '../providers/projects-service/projects-service';
 
 import { CircleComponent } from '../components/circle/circle';
+import { ListOptionsComponent } from '../components/list-options/list-options';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CircleComponent } from '../components/circle/circle';
     ProjectColorPage,
     ProjectsListPage,
     TaskAddPage,
-    CircleComponent
+    CircleComponent,
+    ListOptionsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { CircleComponent } from '../components/circle/circle';
     ProjectColorPage,
     ProjectsListPage,
     TaskAddPage,
-    CircleComponent
+    CircleComponent,
+    ListOptionsComponent
   ],
   providers: [
     StatusBar,

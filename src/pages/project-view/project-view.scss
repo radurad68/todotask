@@ -1,3 +1,43 @@
 page-project-view {
 
+    .item[no-lines].bottom-border { 
+        border-bottom: 1px solid grey;
+    }
+    .item {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+    }
+
+    .inner-priority {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+        width: 5px !important;
+        height: 70px !important;
+    }
+
+    .inner-text {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+        padding-left: 15px !important;
+        max-height: 50px !important;
+    }
+
+    .inner-options {
+        max-height: 30px !important;
+        transition: 0.5s linear;
+        border-bottom: 1px solid grey;
+    }
+
+    .inner-option-left {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+        padding-left: 20px !important;
+    }
+
+    .inner-option-right {
+        margin: 0 0 0 0 !important;
+        padding: 0 0 0 0 !important;
+        padding-right: 20px !important;
+    }
+
 }

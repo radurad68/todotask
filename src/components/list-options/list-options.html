@@ -1,0 +1,10 @@
+<!-- Generated template for the ListOptionsComponent component -->
+<div #expandWrapper class='expand-wrapper' [class.collapsed]="!expanded">
+  <ng-content></ng-content>
+  <button item-start (click)="onFirstOptionClick()">
+    <ion-icon item-start name='checkmark' ></ion-icon>
+  </button>
+  <button item-end (click)="onSecondOptionClick()">
+    <ion-icon item-start name='edit' ></ion-icon>
+  </button>
+</div>

@@ -12,15 +12,24 @@
 
 </ion-header>
 
-
 <ion-content>
   <ion-list>
-      <button ion-item no-lines class="bottom-border" detail-none *ngFor="let task of project.tasks" (click)="onSelect(task)">
-          <circle item-start [ngStyle]="{'background': 'red' }"></circle>
-          <circle item-start style="background: rgb(15, 0, 225)"></circle>
-          
-          <ion-label item-content>{{ task.name }}</ion-label>
-        </button> 
+      <div *ngFor="let task of project.tasks">
+        <div *ngIf="!task.completed">
+            <button ion-item no-lines class="bottom-border" detail-none  (click)="onSelect(task)">
+                <div item-start [style.backgroundColor]="getColorPriority(task)" class="inner-priority"><ion-label></ion-label></div>
+                <p item-content class="inner-text">{{ task.name }}</p>
+            </button> 
+            <ion-item *ngIf="task.expanded" class="inner-options">
+                <button item-start (click)="onLeftOptionClick(task)" class="inner-option-left">
+                    <ion-icon name='checkmark' ></ion-icon>
+                </button>
+                <button item-end (click)="onRightOptionClick(task)" class="inner-option-right">
+                    <ion-icon name='create' ></ion-icon>
+                </button>
+            </ion-item>
+        </div>
+      </div>
   </ion-list>
   <ion-fab bottom right>
     <button ion-fab mini><ion-icon name="add" (click)="onAdd()"></ion-icon></button>

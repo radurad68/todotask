@@ -28,7 +28,7 @@ export class ProjectsListPage {
     public projectsService: ProjectsServiceProvider
   ) {
 
-    this.project = this.navParams.get('project');
+    this.project = this.navParams.get('projectForTaskSelect');
 
     // connect projects to provider observables
     this.projectsService.projects$.subscribe(list => {

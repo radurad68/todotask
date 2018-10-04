@@ -25,27 +25,33 @@ export class Project {
         else {
             this.tasks = new Array<Task>();
         }
-        this.updateCount();
+        this.update();
         this.colorRgb = Colors.list[this.color];
     }
 
     addTask(task: Task) {
         this.tasks.push(task);
-        this.updateCount();
+        this.update();
     }
 
     removeTask(task: Task) {
         let index = this.tasks.indexOf(task);
         if (index != -1) {
             this.tasks.splice(index, 1);
-            this.updateCount();
+            this.update();
         }
     }
 
     moveTask(task: Task, project: Project) {
         this.removeTask(task);
         project.addTask(task);
-        this.updateCount();
+        this.update();
+    }
+
+    resetExpand() {
+        this.tasks.map(task => {
+            task.expanded = false;
+        })
     }
 
     updateColor(color: number) {
@@ -53,7 +59,23 @@ export class Project {
         this.colorRgb = Colors.list[this.color];
     } 
 
+    public update() {
+        this.updateCount();
+        this.sortTasks();
+    }
+
     private updateCount() {
-        this.count = this.tasks.length;
+        this.count = 0;
+        this.tasks.map(task => {
+            if (!task.completed) {
+                this.count += 1;
+            }
+        })
+    }
+
+    private sortTasks() {
+        Array.prototype.sort.call(this.tasks, (task1, task2) => {
+            return task1.priority < task2.priority;
+        })
     }
 }

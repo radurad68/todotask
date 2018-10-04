@@ -42,7 +42,7 @@ export class ProjectsPage {
   onItemSelected(project) {
     console.log('onItemSelected');
     this.navCtrl.push(ProjectViewPage, {
-      project: project
+      projectForTasksList: project
     });
   }
 
