@@ -59,6 +59,7 @@ export class ProjectViewPage {
     let selected = task.expanded;
     this.project.resetExpand();
     task.expanded = !selected;
+    console.log(task.expanded);
     this.projectsService.refreshProjects();
   }
 

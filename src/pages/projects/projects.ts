@@ -43,16 +43,21 @@ export class ProjectsPage {
     public navParams: NavParams,
     public projectsService: ProjectsServiceProvider
   ) {
+    this.projectsService.loadProjects();
     // connect projects to provider observables
     this.projectsService.projects$.subscribe(list => {
       this.projects = list;
     })
     Priorities.populatePriorities();
     this.priorities = Priorities.list;
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProjectsPage');
+  }
+
+  ionViewWillEnter() {
   }
 
   // Actions

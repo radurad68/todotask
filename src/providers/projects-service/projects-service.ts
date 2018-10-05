@@ -34,7 +34,7 @@ export class ProjectsServiceProvider {
   ) {
     console.log('Hello ProjectsServiceProvider Provider');
     this.loadProjects();
-    this.populateProjects();
+    //this.populateProjects();
   }
 
   // Projects
