@@ -16,6 +16,7 @@ import { ProjectViewPage } from '../pages/project-view/project-view';
 import { ProjectColorPage } from '../pages/project-color/project-color';
 import { ProjectsListPage } from '../pages/projects-list/projects-list';
 import { TaskAddPage } from '../pages/task-add/task-add';
+import { PriorityListPage } from '../pages/priority-list/priority-list';
 
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 import { ProjectsServiceProvider } from '../providers/projects-service/projects-service';
@@ -32,6 +33,7 @@ import { ListOptionsComponent } from '../components/list-options/list-options';
     ProjectColorPage,
     ProjectsListPage,
     TaskAddPage,
+    PriorityListPage,
     CircleComponent,
     ListOptionsComponent
   ],
@@ -54,6 +56,7 @@ import { ListOptionsComponent } from '../components/list-options/list-options';
     ProjectColorPage,
     ProjectsListPage,
     TaskAddPage,
+    PriorityListPage,
     CircleComponent,
     ListOptionsComponent
   ],

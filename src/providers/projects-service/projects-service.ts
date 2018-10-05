@@ -24,6 +24,11 @@ export class ProjectsServiceProvider {
   projectTaskSubject: Subject<Project> = new Subject();
   projectTask$: Observable<Project> = this.projectTaskSubject.asObservable();
 
+  // tasks of priority as observable
+  tasks: Array<Task> = new Array<Task>();
+  tasksSubject: BehaviorSubject<Array<Task>> = new BehaviorSubject([]);
+  tasks$: Observable<Array<Task>> = this.tasksSubject.asObservable();
+
   constructor(
     public storageService: StorageServiceProvider
   ) {
@@ -87,6 +92,21 @@ export class ProjectsServiceProvider {
     this.refreshProjects();
   }
 
+  // Tasks With Priority
+
+  getTasksByPriority(priority: number) {
+    this.tasks = new Array<Task>();
+    for(let indexProjects = 0; indexProjects < this.projects.length; indexProjects++) {
+      for (let indexTasks = 0; indexTasks < this.projects[indexProjects].tasks.length; indexTasks++) {
+        let task = this.projects[indexProjects].tasks[indexTasks];
+        if (task.priority == priority) {
+          this.tasks.push(task);
+        }
+      }
+    }
+    this.refreshTasks();
+  }
+
   // Utils
 
   updateProjectForTask(project: Project) {
@@ -95,6 +115,10 @@ export class ProjectsServiceProvider {
   }
 
   // Storage, Observable
+
+  refreshTasks() {
+    this.tasksSubject.next(this.tasks);
+  }
 
   refreshProjectTask() {
     this.projectTaskSubject.next(this.projectTask);

@@ -64,7 +64,7 @@ export class Project {
         this.sortTasks();
     }
 
-    private updateCount() {
+    public updateCount() {
         this.count = 0;
         this.tasks.map(task => {
             if (!task.completed) {

@@ -20,17 +20,32 @@
 </ion-header>
 
 
-<ion-content>
-
-    <ion-list>
-        <button ion-item no-lines class="bottom-border" detail-none *ngFor="let project of projects" (click)="onItemSelected(project)">
+<ion-content [ngStyle]="{'background-color': colorBackgroundSelected}">
+    <ion-row class="header-top">
+      <ion-col col-6 class="header-button-left">
+        <button ion-button full [ngStyle]="{'color': colorProjects, 'background-color': colorBackgroundProjects}" (click)="onProjectsSelected()">Projects
+        </button>
+      </ion-col>
+      <ion-col col-6 class="header-button-right">
+        <button ion-button full [ngStyle]="{'color': colorFilters, 'background-color': colorBackgroundFilters}" (click)="onPrioritiesSelected()">Filters
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-list *ngIf="isFirstTabSelected" [ngStyle]="{'background-color': colorBackgroundSelected}">
+        <button ion-item no-lines class="bottom-border" detail-none *ngFor="let project of projects" (click)="onItemSelected(project)" [ngStyle]="{'background-color': colorBackgroundSelected}">
           <circle item-start [circleColor]="project.colorRgb" class="inner-icon"></circle>
           <ion-label item-content class="inner-text">{{ project.name }}</ion-label>
           <ion-label item-end class="inner-count">{{ project.count }}</ion-label>
         </button> 
-        <button ion-item detail-none no-lines class="bottom-border" (click)="onAddProject()">
+        <button ion-item detail-none no-lines class="bottom-border" (click)="onAddProject()" [ngStyle]="{'background-color': colorBackgroundSelected}">
             <ion-icon item-start name='add' class="inner-icon"></ion-icon>
             <ion-label item-content class="inner-text">Add Project</ion-label>
         </button>
+    </ion-list>
+    <ion-list *ngIf="!isFirstTabSelected" [ngStyle]="{'background-color': colorBackgroundSelected}">
+        <button ion-item no-lines class="bottom-border" detail-none *ngFor="let priority of priorities" (click)="onPrioritySelected(priority)" [ngStyle]="{'background-color': colorBackgroundSelected}">
+            <circle item-start [circleColor]="priority.colorRgb" class="inner-icon"></circle>
+            <ion-label item-content class="inner-text">{{ priority.name }}</ion-label>
+          </button>
     </ion-list>
 </ion-content>

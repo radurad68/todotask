@@ -36,5 +36,45 @@ page-projects {
         margin: 0 0 0 0 !important;
      }
 
+     .header-top {
+        height: 50px;
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+        align-items: center!important;
+     }
+
+     .header-button-left {
+        width: 50%;
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+        text-align: center;
+        font-size:18px;
+     }
+
+     .header-button-right {
+        width: 50%;
+        padding: 0 0 0 0 !important;
+        margin: 0 0 0 0 !important;
+        text-align: center;
+        font-size:18px;
+     }
+
+     .header-bg-left {
+        width: 50%;
+        height: 50px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -2;
+     }
+
+     .header-bg-right {
+        width: 50%;
+        height: 50px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: -3;
+    }
 
 }

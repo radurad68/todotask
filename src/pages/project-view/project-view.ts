@@ -72,6 +72,7 @@ export class ProjectViewPage {
 
   onLeftOptionClick(task) {
     task.completed = true;
+    this.project.updateCount();
     this.projectsService.refreshProjects();
   }
 
